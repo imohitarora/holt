@@ -1,14 +1,4 @@
-import {
-  Get,
-  Res,
-  Param,
-  HttpStatus,
-  Post,
-  Body,
-  Put,
-  Delete,
-  Controller,
-} from '@nestjs/common';
+import { Get, Res, Param, HttpStatus, Post, Body, Put, Delete } from '@nestjs/common';
 import { IBaseService } from './ibase.service';
 
 export class BaseController<T> {
@@ -51,18 +41,13 @@ export class BaseController<T> {
   }
 
   @Put('/:id')
-  async put(
-    @Res() res,
-    @Body() entity: T,
-    @Param('id') id: number,
-  ): Promise<T> {
+  async put(@Res() res, @Body() entity: T, @Param('id') id: number): Promise<T> {
     try {
       const result: T = await this._IBaseService.update(id, entity);
       return res.status(HttpStatus.CREATED).json(result);
     } catch (error) {
       return res.status(HttpStatus.BAD_REQUEST).json({
-        message:
-          'Error. Please check the ID or BODY request, and try again later.',
+        message: 'Error. Please check the ID or BODY request, and try again later.',
       });
     }
   }

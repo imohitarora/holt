@@ -1,8 +1,4 @@
-import {
-  Injectable,
-  BadGatewayException,
-  NotFoundException,
-} from '@nestjs/common';
+import { Injectable, BadGatewayException, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { IBaseService } from './ibase.service';
 

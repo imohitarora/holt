@@ -1,4 +1,11 @@
 import { Injectable } from '@nestjs/common';
+import { BaseService } from 'src/base/base.service';
+import { Role } from './roles.entity';
+import { RolesRepository } from './roles.repository';
 
 @Injectable()
-export class RolesService {}
+export class RolesService extends BaseService<Role> {
+  constructor(private readonly repository: RolesRepository) {
+    super(repository);
+  }
+}
