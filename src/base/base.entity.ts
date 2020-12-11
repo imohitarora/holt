@@ -1,24 +1,18 @@
-import { PrimaryGeneratedColumn, Column, UpdateDateColumn, CreateDateColumn } from 'typeorm';
+import { Column } from 'typeorm';
 
 export abstract class BaseEntity {
-  @PrimaryGeneratedColumn('increment')
-  id: string;
+  @Column({ name: 'mtd_sales', type: 'numeric', precision: 10, scale: 2 })
+  mtdSales: number;
 
-  @Column({ type: 'boolean', default: true })
-  active: boolean;
+  @Column({ name: 'ytd_sales', type: 'numeric', precision: 10, scale: 2 })
+  ytdSales: number;
 
-  @CreateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
-  createDateTime: Date;
+  @Column({ name: 'mtd_commission', type: 'numeric', precision: 10, scale: 2 })
+  mtdCommission: number;
 
-  @Column({ type: 'varchar', length: 300 })
-  createdBy: string;
+  @Column({ name: 'ytd_commission', type: 'numeric', precision: 10, scale: 2 })
+  ytdCommission: number;
 
-  @UpdateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
-  lastChangedDateTime: Date;
-
-  @Column({ type: 'varchar', length: 300 })
-  lastChangedBy: string;
-
-  @Column({ type: 'varchar', length: 1500, nullable: true })
-  remarks: string;
+  @Column({ name: 'commission_rate', type: 'numeric', precision: 10, scale: 2 })
+  commissionRate: number;
 }
